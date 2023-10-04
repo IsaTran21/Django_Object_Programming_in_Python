@@ -1,0 +1,57 @@
+<!-- my_template.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Table Data</title>
+    <style>
+        /* Your custom CSS styles for the navigation bar */
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <ul id="tree">
+            {% for row in data %}
+            <li><a href="#">{{ row.B }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- Placeholder for the content corresponding to each item in the navigation bar -->
+    </div>
+
+    <script>
+        // JavaScript code for active treeview with collapse and expand
+        var tree = document.getElementById("tree");
+        var items = tree.getElementsByTagName("li");
+
+        for (var i = 0; i < items.length; i++) {
+            items[i].addEventListener("click", function() {
+                // Clear active class from all items
+                for (var j = 0; j < items.length; j++) {
+                    items[j].classList.remove("active");
+                }
+
+                // Add active class to the clicked item
+                this.classList.add("active");
+
+                // Get the text (B value) of the clicked item
+                var text = this.innerText;
+
+                // AJAX request to get the corresponding row data for B
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "/get_data?b=" + text, true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // Replace the content with the fetched data
+                        var content = document.querySelector(".content");
+                        content.innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send();
+            });
+        }
+    </script>
+</body>
+</html>

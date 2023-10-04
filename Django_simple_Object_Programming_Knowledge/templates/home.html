@@ -1,0 +1,362 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>OOP Python</title>
+  <link rel="icon" type="image/png" href="{% static 'images/logo.jpg' %}">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #top-box {
+      height: 12.5%; /* 1/8 of the webpage */
+      background-color: green;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #the_body {
+      height: 87.5%; /* Remaining area after the top box */
+      display: flex;
+    }
+
+    #body_left {
+      width: 25%; /* 1/4 of the_body */
+      background-color: lightgreen; /* Light green color for the left area */
+      padding: 20px;
+      box-sizing: border-box; /* Include padding and border in the width calculation */
+      overflow-y: auto;
+    }
+    #body_right {
+      flex: 3; /* 3/4 of the_body */
+      position: relative;
+      padding: 20px;
+      flex: 3; /* 3/4 of the_body */
+      background-image: url("{% static 'images/background.png' %}");
+      background-size: cover;
+      opacity: 1; /* Set the initial opacity of the background image */
+      
+      background-attachment: fixed; /* Keep the background fixed */
+    }
+
+    .treeview {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    .treeview li {
+      position: relative;
+    }
+
+    .treeview .expand-collapse {
+      cursor: pointer;
+    }
+
+    .treeview .expand-collapse:before {
+      content: "+ ";
+    }
+
+    .treeview .expand-collapse.collapsed:before {
+      content: "- ";
+    }
+
+    .treeview .subnodes {
+      display: none;
+    }
+
+    .treeview .expanded .subnodes {
+      display: block;
+    }
+    #search-box {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 200px;
+      padding: 5px;
+    }
+    /* Define CSS to hide all definitions initially */
+        .definition {
+          display: none;
+        }
+
+    /* Define CSS to show the active definition */
+      .active-definition {
+          display: block;
+      }
+  </style>
+
+</head>
+<body>
+  <div id="top-box">
+    <!-- Generated content for the top box -->
+    <h1>KIẾN THỨC OOP</h1>
+  </div>
+
+  <div id="the_body">
+    <div id="body_left">
+      <!-- Collapsing Treeviews with 4 nested expanding nodes -->
+      <ul class="treeview">
+        <li>
+          <span class="expand-collapse">KHÁI NIỆM</span>
+
+          <ul class="subnodes">
+          <li><a href="#" onclick="showDefinition('definition1')">{{khainiem_objects.0.TEN_KTHUC}}</a></li>
+          <li><a href="#" onclick="showDefinition('definition2')">{{khainiem_objects.1.TEN_KTHUC}}</a></li>
+          <li><a href="#" onclick="showDefinition('definition3')">{{khainiem_objects.2.TEN_KTHUC}}</a></li>
+          <li><a href="#" onclick="showDefinition('definition4')">{{khainiem_objects.3.TEN_KTHUC}}</a></li>
+          <li><a href="#" onclick="showDefinition('definition5')">{{khainiem_objects.4.TEN_KTHUC}}</a></li>
+          <li><a href="#" onclick="showDefinition('definition6')">{{khainiem_objects.5.TEN_KTHUC}}</a></li>
+          <li><a href="#" onclick="showDefinition('definition7')">{{khainiem_objects.6.TEN_KTHUC}}</a></li>
+          <li><a href="#" onclick="showDefinition('definition8')">{{khainiem_objects.7.TEN_KTHUC}}</a></li>
+          <li><a href="#" onclick="showDefinition('definition9')">{{khainiem_objects.8.TEN_KTHUC}}</a></li>
+          <li><a href="#" onclick="showDefinition('definition10')">{{khainiem_objects.9.TEN_KTHUC}}</a></li><!-- kn11 -->
+          <li><a href="#" onclick="showDefinition('definition11')">{{khainiem_objects.10.TEN_KTHUC}}</a></li><!-- kn12 -->
+          </ul>
+
+
+        </li>
+        <li>
+          <span class="expand-collapse">BÀI TẬP</span>
+          <ul class="subnodes">
+            <li><a href="#" onclick="showDefinition('definition12')">{{baitap_objects.0.TEN_KTHUC}}</a></li><!-- bt1 -->
+            
+            <li><a href="#" onclick="showDefinition('definition13')">{{baitap_objects.1.TEN_KTHUC}}</a></li><!-- bt2 -->
+            
+            <li><a href="#" onclick="showDefinition('definition14')">{{baitap_objects.2.TEN_KTHUC}}</a></li><!-- bt3 -->
+            
+            <li><a href="#" onclick="showDefinition('definition15')">{{baitap_objects.3.TEN_KTHUC}}</a></li><!-- bt4 -->
+             
+            <li><a href="#" onclick="showDefinition('definition16')">{{baitap_objects.4.TEN_KTHUC}}</a></li><!-- bt5 -->
+            <!--
+            <li><a href="#" onclick="showDefinition('definition6')">{{baitap_objects.5.TEN_KTHUC}}</a></li>
+            <li><a href="#" onclick="showDefinition('definition7')">{{baitap_objects.6.TEN_KTHUC}}</a></li>
+            <li><a href="#" onclick="showDefinition('definition8')">{{baitap_objects.7.TEN_KTHUC}}</a></li>
+            <li><a href="#" onclick="showDefinition('definition9')">{{baitap_objects.8.TEN_KTHUC}}</a></li>
+            <li><a href="#" onclick="showDefinition('definition10')">{{baitap_objects.9.TEN_KTHUC}}</a></li>kn11
+            <li><a href="#" onclick="showDefinition('definition11')">{{baitap_objects.10.TEN_KTHUC}}</a></li>kn12 -->
+            
+            </ul>
+        </li>
+
+      </ul>
+      <p>   <br></p>
+      <p>   <br></p>
+      <p>   <br></p>
+      <p>   <br></p>
+      <p>   <br></p>
+      <p>   <br></p>
+      <p>   <br></p>
+      <p>   <br></p>
+      <p>   <br></p>
+      <p>   <br></p>
+ 
+    </div>
+
+    <div id="body_right">
+      
+      <!-- Generated content for the right area -->
+
+      <input type="text" id="search-box" placeholder="Search...">
+
+        <!-- Definitions -->
+        <div class="definition" id="definition1">
+          <!-- Content for Definition 1 -->
+          <h2>{{khainiem_objects.0.TEN_KTHUC}} là gì?</h2>
+          <center>
+            <img src="{% static 'images/kn1.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+          <p>{{khainiem_objects.0.ND_KTHUC|safe}}</p>
+        </div>
+
+        <div class="definition" id="definition2">
+          <!-- Content for Definition 2 -->
+          <h2>{{khainiem_objects.1.TEN_KTHUC}} là gì?</h2>
+          <center>
+            <img src="{% static 'images/kn2.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.1.ND_KTHUC|safe}}</p>
+        </div>
+
+        <div class="definition" id="definition3">
+          <!-- Content for Definition 3 -->
+          <h2>{{khainiem_objects.2.TEN_KTHUC}} là gì?</h2>
+          
+          <center>
+            <img src="{% static 'images/kn1_1.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.2.ND_KTHUC|safe}}</p>
+        </div>
+
+        <div class="definition" id="definition4">
+          <!-- Content for Definition 4 -->
+          <h2>{{khainiem_objects.3.TEN_KTHUC}} là gì?</h2>
+          
+          <center>
+            <img src="{% static 'images/kn4.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.3.ND_KTHUC|safe}}</p>
+        </div>
+
+        <div class="definition" id="definition5">
+          <!-- Content for Definition 5 -->
+          <h2>{{khainiem_objects.4.TEN_KTHUC}} là gì?</h2>
+          
+          <center>
+            <img src="{% static 'images/kn5.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.4.ND_KTHUC|safe}}</p>
+        </div>
+
+        <div class="definition" id="definition6">
+          <!-- Content for Definition 6 -->
+          
+          <h2>{{khainiem_objects.5.TEN_KTHUC}} là gì?</h2>
+          
+          <center>
+            <img src="{% static 'images/kn6.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.5.ND_KTHUC|safe}}</p>
+        </div>
+
+
+        <div class="definition" id="definition7">
+          <!-- Content for Definition 7 -->
+         
+          <h2>{{khainiem_objects.6.TEN_KTHUC}} là gì?</h2>
+          
+          <center>
+            <img src="{% static 'images/kn7.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.6.ND_KTHUC|safe}}</p>
+        </div>
+
+
+        <div class="definition" id="definition8">
+          <!-- Content for Definition 8 -->
+           
+          <h2>{{khainiem_objects.7.TEN_KTHUC}} là gì?</h2>
+          
+          <center>
+            <img src="{% static 'images/kn8.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.7.ND_KTHUC|safe}}</p>
+        </div>
+
+        <div class="definition" id="definition9">
+          <!-- Content for Definition 9 -->
+         
+          <h2>{{khainiem_objects.8.TEN_KTHUC}} là gì?</h2>
+          
+          <center>
+            <img src="{% static 'images/kn9.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.8.ND_KTHUC|safe}}</p>
+        </div>
+
+        <div class="definition" id="definition10">
+          <!-- Content for Definition 10 -->
+          <h2>{{khainiem_objects.9.TEN_KTHUC}} là gì?</h2>
+          
+          <center>
+            <img src="{% static 'images/kn11.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.9.ND_KTHUC|safe}}</p>
+        </div>
+
+        <div class="definition" id="definition11">
+          <!-- Content for Definition 10 -->
+           <!-- herrrrrrrrrrrrrrrrrrreeeeeeeeeeeeee -->
+          <h2>{{khainiem_objects.10.TEN_KTHUC}} là gì?</h2>
+          
+          <center>
+            <img src="{% static 'images/kn12.jpg' %}" alt="OOP" width="200" height="100">
+          </center>
+         <p>{{khainiem_objects.10.ND_KTHUC|safe}}</p>
+        </div>
+
+
+
+        <!-- BÀI TẬP -->
+        <div class="definition" id="definition12">
+          <!-- bt1 -->
+          <h2>{{baitap_objects.0.TEN_KTHUC}}</h2>
+          <p>{{baitap_objects.0.TOM_TAT|safe}}</p>
+          <br>
+          <a href="bt1.html">Lời giải</a>
+        </div>
+
+        <div class="definition" id="definition13">
+          <!-- Bt2 -->
+          <h2>{{baitap_objects.1.TEN_KTHUC}}</h2>
+         <p>{{baitap_objects.1.TOM_TAT|safe}}</p>
+         <br>
+         <a href="bt2.html">Lời giải</a>
+        </div>
+
+        <div class="definition" id="definition14">
+          <!-- Bt3-->
+          <h2>{{baitap_objects.2.TEN_KTHUC}}</h2>
+         <p>{{baitap_objects.2.TOM_TAT|safe}}</p>
+         <br>
+         <a href="bt3.html">Lời giải</a>
+        </div>
+
+        <div class="definition" id="definition15">
+          <!-- Bt4-->
+          <h2>{{baitap_objects.3.TEN_KTHUC}}</h2>
+         <p>{{baitap_objects.3.TOM_TAT|safe}}</p>
+         <br>
+         <a href="bt4.html">Lời giải</a>
+        </div>
+
+        <div class="definition" id="definition16">
+          <!-- Bt5-->
+          <h2>{{baitap_objects.4.TEN_KTHUC}}</h2>
+         <p>{{baitap_objects.4.TOM_TAT|safe}}</p>
+         <br>
+         <a href="bt5.html">Lời giải</a>
+        </div>
+
+    
+       </div>
+
+    
+</div>
+
+  <script>
+    // JavaScript for handling treeview collapse/expand functionality
+    const expandCollapseButtons = document.querySelectorAll('.expand-collapse');
+
+    expandCollapseButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const parent = button.parentElement;
+        parent.classList.toggle('expanded');
+      });
+    });
+    function showDefinition(definitionId) {
+    // Get all definition elements
+    const definitions = document.getElementsByClassName('definition');
+
+    // Hide all definitions
+    for (let i = 0; i < definitions.length; i++) {
+      definitions[i].classList.remove('active-definition');
+    }
+
+    // Show the selected definition
+    const selectedDefinition = document.getElementById(definitionId);
+    selectedDefinition.classList.add('active-definition');
+
+    // Check if any definition is active
+    const isActiveDefinition = Array.from(definitions).some(def => def.classList.contains('active-definition'));
+
+    // Toggle background image visibility
+    const bodyRight = document.getElementById('body_right');
+    bodyRight.style.backgroundImage = isActiveDefinition ? 'none' : 'url(path/to/background-image.jpg)';
+  }
+  </script>
+</body>
+</html>
